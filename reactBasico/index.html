@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Básico</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const Button = () =>{
+      return <button>Comprar</button>;
+    }
+
+    const Navegacao = () =>{
+      return <ul>
+                <li>
+                  <a href="#">link 1</a>
+                </li>
+                <li>
+                  <a href="#">link 2</a>
+                </li>
+            </ul>
+    }
+
+    const Produtos = () =>{
+      const produto1 = 'Camisa';
+      const produto2 = 'Bermuda';
+    
+    function handleClick(event){
+      console.log(event.target.innerText);
+    }
+      
+    return <div>
+      <button onClick={handleClick} >{produto2} R$ {Math.random().toFixed(2) * 100}</button>
+      <button>{produto1} R$ {Math.random().toFixed(2) * 100}</button>
+          </div>
+    }
+
+    const App = () => {
+      return <div>
+        <Navegacao />
+        <Button />
+        <Produtos />
+            </div>
+
+    }
+
+
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+    root.render(<App />);
+  </script>
+</body>
+</html>
