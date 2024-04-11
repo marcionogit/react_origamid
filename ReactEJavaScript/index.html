@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React e JavaScript</title>
+  
+  <!-- Carrega o React, React Dom e Babel -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+  
+  <!-- ====================== Feito com JavaScript puro =========================== -->
+  <div>
+    <p >Total: <span id="total"></span></p>
+    <p >Preço: R$<span id="preco"></span></p>
+    <button id="comprar">Comprar</button>
+  </div>
+
+  <script type="application/javascript">
+    const total = document.querySelector('#total');
+    const preco = document.querySelector('#preco');
+    const comprar = document.querySelector('#comprar');
+
+    let contador = 1;
+    atualizarValor(contador);
+
+    function atualizarValor(contador){
+        total.innerText = contador;
+        preco.innerText = contador * 250;
+    }
+
+
+    function adicionar(){
+      contador++;
+      atualizarValor(contador);
+    }
+
+
+    comprar.addEventListener('click', adicionar);
+  </script>
+
+  <!-- ====================== Feito com React ============================ -->
+
+  <div id="app-react"></div>
+
+  <script type="text/babel">
+    const Comprar = () =>{
+      const [contador2, setContador] = React.useState(1);
+      return (
+        <div>
+        <p>Total: {contador2}</p>
+        <p>Preço: R${contador2 * 250}</p>
+        <button onClick={()=> setContador(contador2 + 1)}>Comprar</button>
+      </div>
+    );
+    };
+
+    ReactDOM.createRoot(document.querySelector('#app-react')).render(<Comprar />);
+  </script>
+</body>
+</html>
