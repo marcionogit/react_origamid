@@ -28,18 +28,26 @@ const mario = {
   ativa: false,
 };
 
-const green = {
-  color: green,
-}
+const lista = []
 
 const App = () => {
   const dados = luana;
+  dados.compras.forEach(item =>{
+    lista.push(Number(item.preco.replace('R$ ', '')));
+  })
 
+  let soma = lista.reduce((acumulador, elemento) =>{
+    return acumulador + elemento;
+  }, 0)
+
+  
   return <div>
             <p>Nome: {dados.cliente}</p>
             <p>Idade: {dados.idade}</p>
-            <p style={green}>Situação: {dados.ativa === true ? 'Ativa' : 'Inativa'}</p>
-            <p>Total de gastos: {(+dados.compras[0].preco.replace('R$ ', '') + +dados.compras[1].preco.replace('R$ ', '') + +dados.compras[2].preco.replace('R$ ', '') + +dados.compras[3].preco.replace('R$ ', ''))}</p>
+            
+              <p>Situação: <span style={{color: dados.ativa ? 'green' : 'red'}}>{dados.ativa === true ? 'Ativa' : 'Inativa'}</span></p>
+            
+            <p >Total de gastos: {soma}</p>
         </div>;
 };
 
