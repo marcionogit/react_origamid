@@ -9,7 +9,7 @@ const App = () => {
 
   return (
     <button onClick={()=>{setContar(contar + 1)}}>{contar}</button>
-  )
+  ) 
 }
 
 export default App
