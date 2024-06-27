@@ -28,3 +28,31 @@ h1{
     opacity: initial;
   }
 }
+
+.loading{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  /* background-color: #ccc; */
+  border: 10px solid #ccc;
+  border-right-color: transparent;
+  animation: loading 1s infinite;
+}
+
+@keyframes loading{
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+.App{
+  display: flex;
+  min-height: calc(100vh + 10rem);
+  flex-direction: column;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.content{
+  flex: 1;
+}

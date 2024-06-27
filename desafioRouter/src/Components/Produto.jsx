@@ -27,14 +27,16 @@ const Produto = () => {
 
   }, [id])
 
-  if(loading) return <p>Carregando...</p>;
+  if(loading) return <p className='loading'></p>;
   if(error) return error;
   if(produto === null)  return null;
   return (
     <section className={`${styles.produto} animaLeft`}>
-      {produto.fotos.map( foto =>(
-        <img key={foto.src} src={foto.src} alt={foto.titulo} />
-      ))}
+      <div>
+        {produto.fotos.map( foto =>(
+          <img key={foto.src} src={foto.src} alt={foto.titulo} />
+        ))}
+      </div>
       <div>
         <h1>{produto.nome}</h1>
         <span className={styles.preco}>R$ {produto.preco}</span>
